@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,8 +27,9 @@ public class Main {
   public static void flipNHeads(int headsInARow){
     int numberOfFlips = 0;
     int numberOfHeads = 0;
+    Random rnd = new Random();
     while(numberOfHeads < headsInARow){
-      if(Math.random() < .5){
+      if(rnd.nextFloat() < .5){
         System.out.println("tails");
         numberOfHeads = 0;
       }else{
@@ -42,13 +44,28 @@ public class Main {
   // Function to only print out each second when a new second happens
   public static void clock(){
     LocalDateTime previousSecond = LocalDateTime.now();
+    long speed = 0;
     while(true){
+      speed++;
       LocalDateTime current = LocalDateTime.now();
       if(previousSecond.getSecond() != current.getSecond()){
         String time = current.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        System.out.println(time);
+        System.out.println(time + " " + convertSpeed(speed));
         previousSecond = current;
+        speed = 0;
       }
+    }
+  }
+
+  public static String convertSpeed(long speed){
+    if(speed < 1_000){
+      return (speed + " Hz");
+    }else if (speed < 1_000_000){
+      return ((float)speed/1_000 + " kHz");
+    }else if (speed < 1_000_000_000){
+      return ((float)speed/1_000_000 + " MHz");
+    }else{
+      return ((float)speed/1_000_000_000 + " GHz");
     }
   }
 }
