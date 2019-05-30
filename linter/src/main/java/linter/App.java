@@ -11,6 +11,7 @@ public class App {
     public static void main(String[] args) {
         LinterReader reader = new LinterReader();
         Path p1 = Paths.get("src/main/resources/gates.js");
-        reader.findErrors(p1);
+        String errors = reader.findErrors(p1);
+
     }
 }
