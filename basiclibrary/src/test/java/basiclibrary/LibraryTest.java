@@ -106,6 +106,14 @@ public class LibraryTest {
         assertEquals(classUnderTest.analyzeWeatherData(weeklyMonthTemperatures), compareResult);
     }
 
+    @Test
+    public void test_empty_AnalyzeWeatherData(){
+        int[][] weeklyMonthTemperatures = {};
+        String compareResult = "";
+        Library classUnderTest = new Library();
+        assertEquals(classUnderTest.analyzeWeatherData(weeklyMonthTemperatures), compareResult);
+    }
+
     // Tally
     @Test
     public void test_equals_Tally(){
