@@ -12,7 +12,7 @@ CF 401
     - containsDuplicates
     - arrayAverage
     - twoDArrayAverage
-3. [The basiclibrary contains a file with the following functions with tests](https://github.com/thatsjustjohn/java-fundamentals/blob/master/linter/src/main/java/linter/LinterReader.java)
+3. [The basiclibrary contains a file with the following functions with tests](https://github.com/thatsjustjohn/java-fundamentals/blob/master/basiclibrary/src/main/java/basiclibrary/Library.java)
     - analyzeWeatherData
     - tally
-    - [linter is a Java App that returns lines with semicolon errors]()
+    - [linter is a Java App that returns lines with semicolon errors](https://github.com/thatsjustjohn/java-fundamentals/blob/master/linter/src/main/java/linter/LinterReader.java)
