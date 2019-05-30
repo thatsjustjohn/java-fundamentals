@@ -7,15 +7,8 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class LinterReader {
-    public void findErrors(Path pathName) {
-        HashSet<String> charSet = new HashSet<>();
-        charSet.add("");
-        charSet.add("}");
-        charSet.add("{");
-        charSet.add("if");
-        charSet.add("else");
-
-
+    public String findErrors(Path pathName) {
+        String errors = "";
         try {
             Scanner sc = new Scanner(new File(pathName.toString()));
             int lineNum = 1;
@@ -23,23 +16,25 @@ public class LinterReader {
             while(sc.hasNextLine()) {
                 String line = sc.nextLine();
                 // Initial test cases
-                if(!(line == "" || line.contains("if") || line.contains("else")))
-                {
-                    // Test for end of string and make sure string isn't null
-                    if(line.length() > 0){
-                        char lastChar = line.charAt(line.length() - 1);
-                        if(!(lastChar == '{' || lastChar == '}')){
-                            System.out.println(String.format("Line %d: Missing semicolon.", lineNum));
-                            errorCounter++;
+                if(!line.contains(";")) {
+                    if (!(line == "" || line.contains("if") || line.contains("else"))) {
+                        // Test for end of string and make sure string isn't null
+                        if (line.length() > 0) {
+                            char lastChar = line.charAt(line.length() - 1);
+                            if (!(lastChar == '{' || lastChar == '}')) {
+                                errors += String.format("Line %d: Missing semicolon.\n", lineNum);
+                                errorCounter++;
+                            }
                         }
                     }
                 }
                 lineNum++;
             }
-            System.out.print("Total Errors: " + errorCounter);
+            errors += String.format("Total Errors: %d\n", errorCounter);
         } catch(FileNotFoundException e) {
             System.out.println("File not found");
             System.out.println(e);
         }
+        return errors;
     }
 }
