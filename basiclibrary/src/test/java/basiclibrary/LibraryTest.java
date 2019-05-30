@@ -4,6 +4,10 @@
 package basiclibrary;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -64,7 +68,7 @@ public class LibraryTest {
         assertTrue("test_empty_arrayAverage should return '0.0'", classUnderTest.arrayAverage(new int[]{}) == 0.0);
     }
 
-    //2D Array average min
+    // 2D ARRAY AVERAGE MINIMUM
     @Test
     public void test_equals_twoDArrayAverage(){
         int[][] weeklyMonthTemperatures = {
@@ -79,13 +83,44 @@ public class LibraryTest {
 
     @Test
     public void test_empty_twoDArrayAverage(){
+        Library classUnderTest = new Library();
+        assertTrue("test_empty_twoDArrayAverage should return 'null'",classUnderTest.twoDArrayAverage(new int[][]{}) == null);
+    }
+
+    // ANALYZE WEATHER
+    @Test
+    public void test_equals_AnalyzeWeatherData(){
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
                 {57, 65, 65, 70, 72, 65, 51},
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
         };
+        String compareResult = "High: 72\n" +
+                "Low: 51\n" +
+                "Never saw temperature: 63\n" +
+                "Never saw temperature: 67\n" +
+                "Never saw temperature: 68\n" +
+                "Never saw temperature: 69";
         Library classUnderTest = new Library();
-        assertTrue("test_empty_twoDArrayAverage should return 'null'",classUnderTest.twoDArrayAverage(new int[][]{}) == null);
+        assertEquals(classUnderTest.analyzeWeatherData(weeklyMonthTemperatures), compareResult);
+    }
+
+    // Tally
+    @Test
+    public void test_equals_Tally(){
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        Library classUnderTest = new Library();
+        String winner = classUnderTest.tally(votes);
+        System.out.println(winner + " received the most votes!");
     }
 }

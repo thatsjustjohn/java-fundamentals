@@ -3,10 +3,7 @@
  */
 package basiclibrary;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class Library {
     public boolean someLibraryMethod() {
@@ -56,5 +53,44 @@ public class Library {
             }
         }
         return lowAverageArray;
+    }
+
+    public String analyzeWeatherData(int[][] valuesArray){
+        HashSet<Integer> weatherSet = new HashSet<Integer>();
+        int minTemp = valuesArray[0][0];
+        int maxTemp = valuesArray[0][0];
+        for(int i = 0; i < valuesArray.length; i++){
+            for(int j = 0; j < valuesArray[i].length; j++){
+                weatherSet.add(valuesArray[i][j]);
+                if(maxTemp < valuesArray[i][j]) maxTemp = valuesArray[i][j];
+                if(minTemp > valuesArray[i][j]) minTemp = valuesArray[i][j];
+            }
+        }
+        String result = "High: " + maxTemp + "\nLow: " + minTemp;
+        for(int i = minTemp + 1; i < maxTemp; i++){
+            if(!weatherSet.contains(i)) result += String.format("\nNever saw temperature: %d", i);
+        }
+        return result;
+    }
+
+    public String tally(List<String> votes){
+        int highVotes = 0;
+        String winner = "";
+        Map<String, Integer> candidateFrequency = new HashMap<>();
+        for(String candidate : votes){
+            int freq = 1;
+            if(candidateFrequency.containsKey(candidate)){
+                freq = candidateFrequency.get(candidate) + 1;
+                candidateFrequency.put(candidate, freq);
+            }
+            else{
+                candidateFrequency.put(candidate,freq);
+            }
+            if(highVotes < freq){
+                highVotes = freq;
+                winner = candidate;
+            }
+        }
+        return winner;
     }
 }
