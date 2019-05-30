@@ -11,10 +11,6 @@ import java.nio.file.Paths;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test
-    public void testAppHasAGreeting() {
-        App classUnderTest = new App();
-    }
 
     @Test
     public void testLinterReader_empty(){

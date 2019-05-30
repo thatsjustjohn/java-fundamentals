@@ -22,7 +22,9 @@ public class LinterReader {
                         if (line.length() > 0) {
                             char lastChar = line.charAt(line.length() - 1);
                             if (!(lastChar == '{' || lastChar == '}')) {
-                                errors.append(String.format("Line %d: Missing semicolon.\n", lineNum));
+                                errors.append("Line ");
+                                errors.append(lineNum);
+                                errors.append(": Missing semicolon.\n");
                                 errorCounter++;
                             }
                         }
@@ -30,7 +32,10 @@ public class LinterReader {
                 }
                 lineNum++;
             }
-            errors.append(String.format("Total Errors: %d\n", errorCounter));
+            errors.append("Total Errors: ");
+            errors.append(errorCounter);
+            errors.append("\n");
+
         } catch(FileNotFoundException e) {
             System.out.println("File not found");
             System.out.println(e);
