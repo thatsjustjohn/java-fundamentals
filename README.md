@@ -15,4 +15,4 @@ CF 401
 3. [The basiclibrary contains a file with the following functions with tests](https://github.com/thatsjustjohn/java-fundamentals/blob/master/linter/src/main/java/linter/LinterReader.java)
     - analyzeWeatherData
     - tally
-3. [linter is a Java App that returns lines with semicolon errors]()
+    - [linter is a Java App that returns lines with semicolon errors]()
