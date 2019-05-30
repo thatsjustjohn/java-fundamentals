@@ -57,7 +57,6 @@ public class Library {
 
     public String analyzeWeatherData(int[][] valuesArray){
         HashSet<Integer> weatherSet = new HashSet<Integer>();
-        System.out.println(valuesArray.length);
         // Check for empty array <-- since this is 2d instantiating like I did before might not resolve all cases.
         // For this I think first pass would be the best though, its a conditional that gets evaluated n^2
         // EG
@@ -68,6 +67,8 @@ public class Library {
 
         int minTemp = 0;
         int maxTemp = 0;
+        StringBuilder result = new StringBuilder();
+
         boolean firstPass = true;
         for(int i = 0; i < valuesArray.length; i++){
             for(int j = 0; j < valuesArray[i].length; j++){
@@ -81,10 +82,15 @@ public class Library {
                 if(minTemp > valuesArray[i][j]) minTemp = valuesArray[i][j];
             }
         }
-        StringBuilder result = new StringBuilder();
-        result.append(String.format("High: %d\nLow: %d",maxTemp, minTemp));
+        result.append("High: ");
+        result.append(maxTemp);
+        result.append("\nLow: ");
+        result.append(minTemp);
         for(int i = minTemp + 1; i < maxTemp; i++){
-            if(!weatherSet.contains(i)) result.append(String.format("\nNever saw temperature: %d", i));
+            if(!weatherSet.contains(i)) {
+                result.append("\nNever saw temperature: ");
+                result.append(i);
+            }
         }
         return result.toString();
     }
