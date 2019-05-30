@@ -57,20 +57,36 @@ public class Library {
 
     public String analyzeWeatherData(int[][] valuesArray){
         HashSet<Integer> weatherSet = new HashSet<Integer>();
-        int minTemp = valuesArray[0][0];
-        int maxTemp = valuesArray[0][0];
+        System.out.println(valuesArray.length);
+        // Check for empty array <-- since this is 2d instantiating like I did before might not resolve all cases.
+        // For this I think first pass would be the best though, its a conditional that gets evaluated n^2
+        // EG
+        // int minTemp = valuesArray[i][j];
+        // int maxTemp = valuesArray[i][j];
+        if(valuesArray.length == 0) return "";
+        if(valuesArray[0].length == 0) return "";
+
+        int minTemp = 0;
+        int maxTemp = 0;
+        boolean firstPass = true;
         for(int i = 0; i < valuesArray.length; i++){
             for(int j = 0; j < valuesArray[i].length; j++){
+                if(firstPass == true){
+                    minTemp = valuesArray[i][j];
+                    maxTemp = valuesArray[i][j];
+                    firstPass = false;
+                }
                 weatherSet.add(valuesArray[i][j]);
                 if(maxTemp < valuesArray[i][j]) maxTemp = valuesArray[i][j];
                 if(minTemp > valuesArray[i][j]) minTemp = valuesArray[i][j];
             }
         }
-        String result = "High: " + maxTemp + "\nLow: " + minTemp;
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("High: %d\nLow: %d",maxTemp, minTemp));
         for(int i = minTemp + 1; i < maxTemp; i++){
-            if(!weatherSet.contains(i)) result += String.format("\nNever saw temperature: %d", i);
+            if(!weatherSet.contains(i)) result.append(String.format("\nNever saw temperature: %d", i));
         }
-        return result;
+        return result.toString();
     }
 
     public String tally(List<String> votes){
