@@ -96,8 +96,14 @@ public class LibraryTest {
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
         };
+        String compareResult = "High: 72\n" +
+                "Low: 51\n" +
+                "Never saw temperature: 63\n" +
+                "Never saw temperature: 67\n" +
+                "Never saw temperature: 68\n" +
+                "Never saw temperature: 69";
         Library classUnderTest = new Library();
-        classUnderTest.analyzeWeatherData(weeklyMonthTemperatures);
+        assertEquals(classUnderTest.analyzeWeatherData(weeklyMonthTemperatures), compareResult);
     }
 
     // Tally

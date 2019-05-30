@@ -55,7 +55,7 @@ public class Library {
         return lowAverageArray;
     }
 
-    public void analyzeWeatherData(int[][] valuesArray){
+    public String analyzeWeatherData(int[][] valuesArray){
         HashSet<Integer> weatherSet = new HashSet<Integer>();
         int minTemp = valuesArray[0][0];
         int maxTemp = valuesArray[0][0];
@@ -66,10 +66,11 @@ public class Library {
                 if(minTemp > valuesArray[i][j]) minTemp = valuesArray[i][j];
             }
         }
-        System.out.println("High: " + maxTemp + "\nLow: " + minTemp);
+        String result = "High: " + maxTemp + "\nLow: " + minTemp;
         for(int i = minTemp + 1; i < maxTemp; i++){
-            if(!weatherSet.contains(i)) System.out.println(String.format("Never saw temperature: %d", i));
+            if(!weatherSet.contains(i)) result += String.format("\nNever saw temperature: %d", i);
         }
+        return result;
     }
 
     public String tally(List<String> votes){
