@@ -22,3 +22,9 @@ CF 401
         - ```toString()```
     - [Class Review](https://github.com/thatsjustjohn/java-fundamentals/blob/master/inheritance/src/main/java/inheritance/Review.java)
         - ```toString()```
+
+
+## Testing
+For testing just run 
+```./gradlew test```
+Within the respective folder
