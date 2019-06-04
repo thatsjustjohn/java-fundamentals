@@ -52,6 +52,12 @@ public class Restaurant {
         for(int i = 0; i < this.price; i++){
             dollar.append("$");
         }
-        return String.format("%s has %.1f out of 5 stars and has a price of %s and have %d reviews",this.name, this.stars, dollar.toString(), this.reviews.size());
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(String.format("%s has %.1f out of 5 stars and has a price of %s and have %d reviews\n",this.name, this.stars, dollar.toString(), this.reviews.size()));
+        returnString.append("Reviews:\n");
+        for(int i = 0; i < this.reviews.size(); i++){
+            returnString.append(this.reviews.get(i).toString());
+        }
+        return returnString.toString();
     }
 }

@@ -25,7 +25,7 @@ public class Review {
 
     @Override
     public String toString() {
-        return String.format("Author: %s\nStars: %d\n%s",this.author, this.stars, this.body);
+        return String.format("Author: %s\nStars: %d\nBody: %s\n",this.author, this.stars, this.body);
     }
 }
 
