@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Restaurant {
     private String name;
-    private int stars;
+    private float stars;
     private int price;
     private List<Review> reviews;
 
@@ -25,7 +25,7 @@ public class Restaurant {
         return this.name;
     }
 
-    public int getStars(){
+    public float getStars(){
         return this.stars;
     }
 
@@ -39,7 +39,7 @@ public class Restaurant {
 
     public void addReview(Review newReview){
         // Get total stars
-        int totalStars = this.stars * this.reviews.size();
+        float totalStars = this.stars * this.reviews.size();
         reviews.add(newReview);
         totalStars += newReview.getStars();
         // Recalculate average
@@ -52,6 +52,6 @@ public class Restaurant {
         for(int i = 0; i < this.price; i++){
             dollar.append("$");
         }
-        return String.format("%s has %d out of 5 stars and has a price of %s and have %d reviews",this.name, this.stars, dollar.toString(), this.reviews.size());
+        return String.format("%s has %.1f out of 5 stars and has a price of %s and have %d reviews",this.name, this.stars, dollar.toString(), this.reviews.size());
     }
 }

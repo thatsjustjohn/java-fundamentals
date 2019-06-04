@@ -9,9 +9,9 @@ public class RestaurantTest {
     @Test
     public void test_toString() {
         Restaurant classUnderTest = new Restaurant("Mcdonalds", 0, 1);
-        classUnderTest.addReview(new Review("John", "This place tastes bad", 2));
+        classUnderTest.addReview(new Review("John", "This place tastes bad", 3));
         classUnderTest.addReview(new Review( "Jane", "this place tastes awesome", 4));
-        assertEquals("Mcdonalds has 3 out of 5 stars and has a price of $ and have 2 reviews",
+        assertEquals("Mcdonalds has 3.5 out of 5 stars and has a price of $ and have 2 reviews",
                 classUnderTest.toString()
                 );
     }
@@ -29,8 +29,8 @@ public class RestaurantTest {
         Restaurant classUnderTest = new Restaurant("Mcdonalds", 0, 1);
         classUnderTest.addReview(new Review("John", "This place tastes bad", 2));
         classUnderTest.addReview(new Review( "Jane", "this place tastes awesome", 4));
-        assertEquals("Stars should be at 3",
-                3,
-                classUnderTest.getStars());
+        assertEquals(3.0,
+                classUnderTest.getStars(),
+                0);
     }
 }
