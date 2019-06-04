@@ -11,7 +11,7 @@ public class ReviewTest {
         Review classUnderTest = new Review("John", "This place tastes bad", 2);
         assertEquals("Author: John\n" +
                 "Stars: 2\n" +
-                "This place tastes bad",
+                "Body: This place tastes bad\n",
                 classUnderTest.toString());
     }
 }
