@@ -19,6 +19,7 @@ public class Restaurant implements Business {
     public Restaurant(String name, int stars, int price, List<Review> reviews) {
         this(name, price);
         this.reviews = reviews;
+        this.updateStars();
     }
 
     @Override
@@ -39,14 +40,20 @@ public class Restaurant implements Business {
         return this.reviews;
     }
 
-    public void addReview(Review newReview){
-        // Get total stars
-        reviews.add(newReview);
+    @Override
+    public void updateStars(){
         float totalStars = 0;
         for(Review review : this.reviews){
             totalStars += review.getStars();
         }
         this.stars = totalStars / this.reviews.size();
+    }
+
+    @Override
+    public void addReview(Review newReview){
+        // Get total stars
+        reviews.add(newReview);
+        updateStars();
     }
 
     public String toString(){

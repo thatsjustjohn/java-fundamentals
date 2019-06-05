@@ -2,10 +2,38 @@ package inheritance;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class TheaterTest {
 
+    @Test
+    public void test_constructor(){
+        HashSet<String> movies = new HashSet<>();
+        movies.add("John Wick");
+        movies.add("Captain Marvell");
+        List<Review> reviews = new ArrayList<>();
+        reviews.add(new MovieReview("John", "This movie was cool", 4, "Captain " +
+                "Marvell"));
+        reviews.add(new Review("John", "The popcorn was cool", 5));
+        Theater theater = new Theater("Cinerama", 3, reviews, movies);
+        assertEquals("Cinerama has 4.5 out of 5 stars and has a price of $$$ and have 2 reviews\n" +
+                "Movies:\n" +
+                "John Wick\n" +
+                "Captain Marvell\n" +
+                "Reviews:\n" +
+                "Author: John\n" +
+                "Stars: 4\n" +
+                "Movie: Captain Marvell\n" +
+                "Body: This movie was cool\n" +
+                "Author: John\n" +
+                "Stars: 5\n" +
+                "Body: The popcorn was cool\n",
+                theater.toString());
+    }
     @Test
     public void test_addMovie() {
         Theater theater = new Theater("Cinerama", 3);
