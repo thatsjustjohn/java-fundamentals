@@ -22,6 +22,7 @@ public class Theater implements Business {
     public Theater(String name, int price, List<Review> reviews) {
         this(name, price);
         this.reviews = reviews;
+        this.updateStars();
     }
 
     public Theater(String name, int price, List<Review> reviews, HashSet<String> movies) {
@@ -57,14 +58,19 @@ public class Theater implements Business {
     }
 
     @Override
-    public void addReview(Review newReview){
-        // Get total stars
-        reviews.add(newReview);
+    public void updateStars(){
         float totalStars = 0;
         for(Review review : this.reviews){
             totalStars += review.getStars();
         }
         this.stars = totalStars / this.reviews.size();
+    }
+
+    @Override
+    public void addReview(Review newReview){
+        // Get total stars
+        reviews.add(newReview);
+        updateStars();
     }
 
     @Override
