@@ -12,11 +12,11 @@ public class Review {
     }
 
     public String getBody(){
-        return this.getBody();
+        return this.body;
     }
 
     public String getAuthor(){
-        return this.getAuthor();
+        return this.author;
     }
 
     public int getStars(){

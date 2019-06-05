@@ -8,7 +8,7 @@ public class RestaurantTest {
 
     @Test
     public void test_toString() {
-        Restaurant classUnderTest = new Restaurant("McDonalds", 0, 1);
+        Restaurant classUnderTest = new Restaurant("McDonalds", 1);
         classUnderTest.addReview(new Review("John", "This place tastes bad", 3));
         classUnderTest.addReview(new Review( "Jane", "this place tastes awesome", 4));
         assertEquals( "McDonalds has 3.5 out of 5 stars and has a price of $ and have 2 reviews\n" +
@@ -20,7 +20,7 @@ public class RestaurantTest {
 
     @Test
     public void test_addReview_TestAdd(){
-        Restaurant classUnderTest = new Restaurant("McDonalds", 4, 1);
+        Restaurant classUnderTest = new Restaurant("McDonalds", 1);
         int previousSize = classUnderTest.getReviews().size();
         classUnderTest.addReview(new Review("John", "This place tastes bad", 2));
         assertNotEquals(previousSize, classUnderTest.getReviews().size());
@@ -28,7 +28,7 @@ public class RestaurantTest {
 
     @Test
     public void test_addReview_TestStars(){
-        Restaurant classUnderTest = new Restaurant("McDonalds", 0, 1);
+        Restaurant classUnderTest = new Restaurant("McDonalds", 1);
         classUnderTest.addReview(new Review("John", "This place tastes bad", 2));
         classUnderTest.addReview(new Review( "Jane", "this place tastes awesome", 4));
         assertEquals(3.0,
